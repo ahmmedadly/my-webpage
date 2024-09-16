@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AHMED MOHAMED ADLY - Hire Me</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+
+        #container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            max-width: 80%;
+            width: 400px;
+        }
+
+        #question {
+            font-size: 24px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        #buttons-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #yesButton {
+            background-color: #28a745;
+            color: white;
+        }
+
+        #yesButton:hover {
+            background-color: #218838;
+            transform: scale(1.05);
+        }
+
+        #noButton {
+            background-color: #dc3545;
+            color: white;
+            position: static;
+        }
+
+        #noButton:hover {
+            background-color: #c82333;
+        }
+
+        .heart {
+            animation: float 1s infinite;
+        }
+
+        .bunny-container {
+            display: none;
+            margin-top: 20px;
+            font-size: 40px;
+            color: #ff6347;
+            position: relative;
+            text-align: center;
+        }
+
+        .bunny {
+            animation: bounce 1s infinite;
+            display: block;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .bunny .text {
+            font-size: 20px;
+            color: red;
+            margin-top: 10px;
+        }
+
+        #skills {
+            display: none;
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        #skills h3 {
+            color: #333;
+        }
+
+        #skills ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #skills li {
+            margin-bottom: 15px;
+            color: #555;
+            font-size: 16px; /* Smaller font size for skills */
+        }
+
+        #skills li strong {
+            color: #28a745;
+            font-size: 18px; /* Slightly larger for emphasis */
+        }
+
+        #contact {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #contact a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        #contact a:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+
+        @media (max-width: 480px) {
+            #container {
+                padding: 20px;
+            }
+            #question {
+                font-size: 20px;
+            }
+            button {
+                font-size: 16px;
+                padding: 8px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="question">Would you hire me?</div>
+        <div id="buttons-container">
+            <button onclick="handleResponse('yes')" id="yesButton">Yes, I will!</button>
+            <button onclick="moveButton()" id="noButton">No, I won't!</button>
+        </div>
+
+        <div id="bunnyContainer" class="bunny-container">
+            <div id="bunny" class="bunny">
+                <div class="text">I will do my best! ❤</div>
+                (\__/) <br>
+                (•ㅅ•) <br>
+                / >♥
+            </div>
+        </div>
+
+        <div id="skills">
+            <h3>Why You Should Hire Me:</h3>
+            <ul>
+                <li><strong>Hope:</strong> I never lose hope, always seeing opportunities in challenges.</li>
+                <li><strong>Persistence:</strong> I keep trying until I find a solution, no matter how difficult the problem.</li>
+                <li><strong>Innovation:</strong> I approach problems with creativity, thinking outside the box.</li>
+                <li><strong>Adaptability:</strong> I quickly adjust to new situations and technologies.</li>
+                <li><strong>Teamwork:</strong> I collaborate effectively, valuing diverse perspectives.</li>
+            </ul>
+        </div>
+
+        <div id="contact">
+            <p>Let's connect!</p>
+            <p>Email: <a href="mailto:ahmeddly30971@gmail.com">ahmeddly30971@gmail.com</a></p>
+            <p>Phone: +201032124140</p>
+            <p>Check out my <a href="https://github.com/ahmmedadly" target="_blank">GitHub</a> or <a href="https://www.linkedin.com/in/ahmed-adly-76aba5202?original_referer=" target="_blank">LinkedIn</a>.</p>
+        </div>
+    </div>
+
+    <script>
+        let noButtonClicks = 0;
+
+        function handleResponse(response) {
+            var bunnyContainer = document.getElementById('bunnyContainer');
+            var skills = document.getElementById('skills');
+            var contact = document.getElementById('contact');
+
+            if (response === 'yes') {
+                bunnyContainer.style.display = 'block';
+                skills.style.display = 'block';
+                contact.style.display = 'block';
+                resetNoButtonPosition();
+            }
+        }
+
+        function moveButton() {
+            var button = document.getElementById('noButton');
+            var container = document.getElementById('container');
+            var containerRect = container.getBoundingClientRect();
+
+            var maxTop = containerRect.height - button.offsetHeight;
+            var maxLeft = containerRect.width - button.offsetWidth;
+
+            var randomTop = Math.floor(Math.random() * maxTop);
+            var randomLeft = Math.floor(Math.random() * maxLeft);
+
+            button.style.position = 'absolute';
+            button.style.top = randomTop + 'px';
+            button.style.left = randomLeft + 'px';
+
+            noButtonClicks++;
+
+            if (noButtonClicks >= 5) {
+                button.innerText = "Okay, maybe?";
+            }
+        }
+
+        function resetNoButtonPosition() {
+            var button = document.getElementById('noButton');
+            button.style.position = 'static';
+            button.innerText = "No, I won't!";
+            noButtonClicks = 0;
+        }
+    </script>
+</body>
+</html>
